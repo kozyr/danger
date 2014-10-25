@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "com.kozyrenko.danger"
+        minSdkVersion 15
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    wearApp project(':wear')
+    compile project(':app')
+    compile 'pl.charmas.android:android-reactive-location:0.2@aar'
+    compile('org.simpleframework:simple-xml:2.7.1') {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
+    compile 'com.google.android.gms:play-services:5.0.+@aar'
+    compile 'com.android.support:support-v4:20.0.+'
+    compile 'com.netflix.rxjava:rxjava-android:+'
+    compile 'com.squareup.retrofit:retrofit:1.6.1'
+    compile('com.squareup.retrofit:converter-simplexml:1.6.1') {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
+    compile 'net.danlew:android.joda:2.4.0'
+}
